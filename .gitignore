@@ -1,5 +1,6 @@
 .git
 dev
+dev/*
 input/*
 libs/velo.json
 
