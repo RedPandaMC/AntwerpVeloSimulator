@@ -226,7 +226,7 @@ class App:
         else:
             return res
 
-    def make_dir(self, *dir_names: str) -> None:
+    def __make_dir(self, *dir_names: str) -> None:
         """
         Creates sqr_half given dir
 
