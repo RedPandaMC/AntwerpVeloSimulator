@@ -1,4 +1,5 @@
 max_log_bestandsgrote: 10  # Max log file size in megabytes
 aantal_gebruikers: 100
 aantal_fietsen: 50
+aantal_transporteurs: 25
 willekeurigheid: 50  # Randomness percentage (between 0-100)
