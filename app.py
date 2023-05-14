@@ -139,13 +139,25 @@ class Station:
 
 
 class Rit:
-    """ """
+    """
+    Deze class representeert een rit van
+    station A -> Station B met Fiets x
+
+    Instance attrbuten:
+        - startstation [Station]
+        - eindstation [Station]
+        - fiets [Fiets]
+        - afstand [float] (km)
+        - geschatte_tijd [float] (min)
+    """
 
     def __init__(
         self, startstation: Station, eindstation: Station, fiets: Fiets
     ) -> None:
+        self._fiets = fiets
         self._startstation = startstation
         self._eindstation = eindstation
+
         self._afstand = self.__calculate_distance(
             startstation._coordinaten["Y"],
             startstation._coordinaten["X"],
@@ -153,7 +165,6 @@ class Rit:
             eindstation._coordinaten["X"],
         )
         self._geschatte_tijd = self.__calculate_estimate_time(self._afstand)
-        self._fiets = fiets
 
     def __calculate_distance(
         self, x_a: float, y_a: float, x_b: float, y_b: float
