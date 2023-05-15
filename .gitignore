@@ -1,8 +1,10 @@
 .git
 dev
 dev/*
-input/*
-libs/velo.json
+libs/
+libs/*
+config/
+config/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
