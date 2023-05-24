@@ -1,5 +1,7 @@
 .git
 .gitignore
+.vscode
+.vscode/*
 dev
 dev/*
 output/
