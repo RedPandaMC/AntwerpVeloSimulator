@@ -1,8 +1,9 @@
 .git
+.gitignore
 dev
 dev/*
-libs/
-libs/*
+output/
+output/*
 config/
 config/*
 

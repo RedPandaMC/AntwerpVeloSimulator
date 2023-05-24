@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velosim</title>
+    <style>
+body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: small;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        h2 {
+            color: #666;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        body > ul {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding-right: 600px;
+        }
+
+        body ul div {
+            display: flex;
+            list-style-type: none;
+            border:#666 solid 1px;
+        }
+
+        body ul div li
+        {
+           display: block;
+           width: 130px;
+           padding: 0px 5px;
+           text-align: left;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .toggle {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Velosim ritten</h1>
+
+    <div>
+        <button onclick="toggleUserDetails()">Show All User Details</button>
+        <button onclick="toggleStationDetails()">Show All Station Details</button>
+    </div>
+
+    {% for entry in data %}
+    <h2>Cycle: {{ entry.cycle }}</h2>
+
+        <ul>
+            {% for event in entry.events %}
+            <div>
+                <li>Time: {{ event.time }}</li>
+                <li>Gebruiker: {{ event.gebruiker.nummer }}</li>
+                <div class="toggle user-details">
+                    <ul>
+                        <li>User</li>
+                        <ul>
+                            <li>Naam: {{ event.gebruiker.voornaam }} {{ event.gebruiker.achternaam }}</li>
+                            <li>Aantal ritten: {{ event.gebruiker.aantal_ritten }}</li>
+                        </ul>
+                    </ul>
+                </div>
+    
+                <li>Bike: {{ event.fiets.nummer }}</li>
+    
+                <li>Station: {{ event.start_station.nummer }}</li>
+                <div class="toggle station-details">
+                    <ul>
+                        <li>Start Address</li>
+                        <ul>                    
+                            <li>{{ event.start_station.adres.Straatnaam }} {{ event.start_station.adres.Huisnummer }}</li>
+                            <li>{{ event.start_station.adres.Gemeente }} {{ event.start_station.adres.Postcode }}</li>
+                        </ul>
+                    </ul>
+                </div>
+    
+                <li>Station: {{ event.eind_station.nummer }}</li>
+                <div class="toggle station-details">
+                    <ul>
+                        <li>End Address</li>
+                        <ul>
+                            <li>{{ event.eind_station.adres.Straatnaam }} {{ event.eind_station.adres.Huisnummer }}</li>
+                            <li>{{ event.eind_station.adres.Gemeente }} {{ event.eind_station.adres.Postcode }}</li>
+                        </ul>
+                    </ul>
+                </div>
+    
+                <li>Distance: {{ event.afstand }}</li>
+                <li>Time: {{ event.geschatte_tijd }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+    
+
+    
+    {% endfor %}
+
+    <script>
+        function toggleUserDetails() {
+            var userDetails = document.getElementsByClassName('user-details');
+            for (var i = 0; i < userDetails.length; i++) {
+                userDetails[i].classList.toggle('toggle');
+            }
+        }
+
+        function toggleStationDetails() {
+            var stationDetails = document.getElementsByClassName('station-details');
+            for (var i = 0; i < stationDetails.length; i++) {
+                stationDetails[i].classList.toggle('toggle');
+            }
+        }
+    </script>
+</body>
+</html>
